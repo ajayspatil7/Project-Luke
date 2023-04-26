@@ -1,30 +1,43 @@
 # Required Library
 import os
 import time
-from interface import interfaceBuilder as iC
+from interface import interfaceBuilder as iB
+import modelEngine
 import apiKey
 import streamlit as stl
 from langchain.llms import OpenAI
 
 os.environ['OPENAI_API_KEY'] = apiKey.apiKey
+model = OpenAI(temperature=0.9)
 
 # (Heading) UI Component 1
-iC.IB_HeadingsViewer()
+iB.IB_HeadingsViewer()
 
 # (Language Choice) UI Component 2
-user_lang_choice = iC.IB_Languages_Radio()
+user_lang_choice = iB.IB_Languages_Radio()
 
 # (User Input) UI Component 3
 # user_prompt = stl.text_input('Paste Your Code Here')
 # Text area,
 user_prompt = stl.text_area("**Paste your code here**", height=400)
+automatedTestCases = iB.IB_AutoTestCases()
+test_cases = stl.text_area("**Paste your test cases here**", height=100)
+omitOut = ""
+if automatedTestCases:
+    feedModel = iB.IB_LanguageModelQuery(user_lang_choice, user_prompt)
+    omitOut = model(feedModel)
+else:
+    feedModel = iB.IB_LanguageModelQuery(user_lang_choice, user_prompt, test_cases)
+    omitOut = model(feedModel)
 
-model = OpenAI(temperature=0.9)
+if stl.button('Submit your code'):
+    with stl.spinner("Submitting your code..."):
+        stl.write(omitOut)
 
-
-if user_prompt:
-    with stl.spinner('Analysing your prompt...'):
-        time.sleep(1.0)
-        resp = model(user_prompt)
-        stl.success("Here's your prompt")
-        stl.code(resp, language=user_lang_choice)
+#
+# if user_prompt:
+#     with stl.spinner('Testing your code with provided test cases...'):
+#         time.sleep(1.0)
+#         resp = model(user_prompt)
+#         stl.success("Here's your prompt")
+#         stl.code(resp, language=user_lang_choice)

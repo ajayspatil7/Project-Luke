@@ -1,3 +1,12 @@
 import streamlit as st
-from interface import interfaceBuilder as iB
+
+
+def submittedTest():
+    st.write("I've been called by a function")
+
+
+isEmpty = True
+
+
+st.button("Submit", on_click=submittedTest)
 
