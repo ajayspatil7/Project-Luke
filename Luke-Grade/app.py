@@ -33,11 +33,3 @@ else:
 if stl.button('Submit your code'):
     with stl.spinner("Submitting your code..."):
         stl.write(omitOut)
-
-#
-# if user_prompt:
-#     with stl.spinner('Testing your code with provided test cases...'):
-#         time.sleep(1.0)
-#         resp = model(user_prompt)
-#         stl.success("Here's your prompt")
-#         stl.code(resp, language=user_lang_choice)
