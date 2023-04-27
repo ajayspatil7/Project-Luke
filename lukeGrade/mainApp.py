@@ -1,8 +1,6 @@
 # Required Library
 import os
-import time
-from interface import interfaceBuilder as iB
-import modelEngine
+import interfaceBuilder as iB
 import apiKey
 import streamlit as stl
 from langchain.llms import OpenAI
@@ -22,6 +20,7 @@ user_lang_choice = iB.IB_Languages_Radio()
 user_prompt = stl.text_area("**Paste your code here**", height=400)
 automatedTestCases = iB.IB_AutoTestCases()
 test_cases = stl.text_area("**Paste your test cases here**", height=100)
+stl.write(":red[May give wrong answers sometimes]")
 omitOut = ""
 if automatedTestCases:
     feedModel = iB.IB_LanguageModelQuery(user_lang_choice, user_prompt)
