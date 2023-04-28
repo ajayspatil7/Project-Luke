@@ -1,6 +1,8 @@
 # Turing Checker Machine
 
-A Streamlit application that uses OpenAI's GPT-3.5 language model to check the accuracy of your code. The application supports several programming languages such as Python, C, C++, CSS, JavaScript, C#, and Java. You can choose your language of choice, write your code, and provide test cases to verify the accuracy of your code.
+A Streamlit application that uses OpenAI's GPT-3.5 language model to check the accuracy of your code. 
+The application supports several programming languages such as Python, C, C++, CSS, JavaScript, C#, and Java. 
+You can choose your language of choice, write your code, and provide test cases to verify the accuracy of your code.
 
 ## Prerequisites
 
@@ -29,7 +31,7 @@ A Streamlit application that uses OpenAI's GPT-3.5 language model to check the a
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE]() file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/ajayspatil7/Project-Luke/blob/master/LICENSE/license.txt) file for details.
 
 ## Acknowledgments
 
